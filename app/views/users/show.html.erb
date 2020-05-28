@@ -1,4 +1,4 @@
-<div class="row col-md-3">
+<div class="row col-xs-3">
   <h2>User info</h2>
   <table class="table">
     <%= attachment_image_tag @user, :profile_image_id, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
@@ -24,7 +24,7 @@
       <div class="form-group">
         <%= f.label :Opinion %>
         <%= f.text_area :body, class: "col-xs-12" %>
-        <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+        <%= f.submit "Create Book", method: :post, class: "btn btn-primary col-xs-12" %>
       </div>
     <% end %>
   </div>
@@ -32,8 +32,7 @@
 
 
 
-
-<div class="row col-md-9">
+<div class="row col-xs-9">
   <h2>Books</h2>
   <table class="table">
     <thead>

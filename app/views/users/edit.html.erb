@@ -1,20 +1,22 @@
-<div class="row col-md-4">
-  <h2>User info</h2>
-  <div class="form">
-    <%= form_with model: @user do |f| %>
-      <div class="form-group">
-        <%= f.label :Name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="form-group">
-        <%= f.label :Image %>
-        <%= f.attachment_field :profile_image, class: "col-3 user_image" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :Introduction %>
-        <%= f.text_area :introduction %>
-        <%= f.submit "Update User" %>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <h2>User info</h2>
+    <div class="form">
+      <%= form_with model: @user do |f| %>
+        <div class="form-group">
+          <%= f.label :Name %>
+          <%= f.text_field :name, class: "col-3 name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Image %>
+          <%= f.attachment_field :profile_image, class: "col-3 user_image" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Introduction %>
+          <%= f.text_area :introduction, class: "col-3 introduction" %>
+          <%= f.submit "Update User", method: :post, class: "btn btn-primary col-3" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

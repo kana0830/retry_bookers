@@ -9,7 +9,7 @@
       <div class="form-group">
         <%= f.label :Opinion %>
         <%= f.text_area :body, class: "col-xs-12 book_title" %>
-        <%= f.submit "Update Book", class: "btn btn-primary col-xs-12 book_title" %>
+        <%= f.submit "Update Book", method: :post, class: "btn btn-primary col-xs-12 book_title" %>
       </div>
     <% end %>
   </div>
