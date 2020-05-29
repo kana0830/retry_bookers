@@ -1,8 +1,8 @@
-
-  <div class="row col-xs-3">
+<div class="row">
+  <div class="col-xs-3">
     <h2>User info</h2>
     <table class="table">
-      <%= attachment_image_tag @user, :profile_image_id, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+      <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
       <tr>
         <td>name</td>
         <td><%= @user.name %></td>
@@ -15,9 +15,24 @@
     <%= link_to edit_user_path(@user) do %>
       <div class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></div>
     <% end %>
-    <h2>New Book</h2>
+    <h2>New book</h2>
     <div class="form">
       <%= form_with model: @book do |f| %>
+      
+        <%# ここからエラーメッセージ %>
+        <% if @book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+            <ul>
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%# ここまでエラーメッセージ %>
+
         <div class="form-group">
           <%= f.label :Title %>
           <%= f.text_field :title, class: "col-xs-12" %>
@@ -30,13 +45,13 @@
       <% end %>
     </div>
   </div>
+</div>
 
 
 
 
-
-
-<div class="row col-xs-9">
+<div class="row">
+<div class="col-xs-9">
   <h2>Users</h2>
   <table class="table">
     <% @users.each do |user| %>
