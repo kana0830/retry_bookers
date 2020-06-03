@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   # ログイン済ユーザーのみにアクセスを許可する
   before_action :authenticate_user!
+  before_action :screen_user, only: [:edit, :update]
 
   def index
     @user = current_user
@@ -32,5 +33,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :introduction, :user_image)
     end
+
+    def screen_user
+      if params[:id].to_i != current_user.id
+          redirect_to user_path(current_user)
+      end
+    end
+
 
 end
