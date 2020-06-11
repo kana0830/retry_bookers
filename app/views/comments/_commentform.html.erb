@@ -1,0 +1,6 @@
+<%= form_with(model: [book, comment], url: book_comments_path(@book)) do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body, class: "col-xs-12 book_title" %>
+  <%= f.submit class: "btn btn-primary col-xs-12" %>
+<% end %>
+

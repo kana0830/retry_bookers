@@ -1,0 +1,5 @@
+<%= comments.count %>件コメント
+<% comments.each do |comment| %>
+  <p><%= comment.user.name %></p>
+  <p><%= comment.body %></p>
+<% end %>

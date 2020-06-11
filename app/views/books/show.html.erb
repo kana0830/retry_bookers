@@ -6,6 +6,13 @@
 
     <h2>New book</h2>
     <%= render "books/form", user: @user, book: @book_new %>
+
+    <div id="comment-create">
+      <h2>Comment</h2>
+    </div>
+    <div class="comment-create">
+      <%= render partial: 'comments/commentform', locals: {comment: @comment, book: @book} %>
+    </div>
     
   </div>
 
@@ -13,6 +20,7 @@
     <h2>Book detail</h2>
     <table class="table">
       <thead>
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -27,9 +35,14 @@
         <td><%= link_to @book.title, @book %></td>
         <td><%= @book.body %></td>
         <td>
-        <div id="favorites_buttons_<%= @book.id %>">
-          <%= render partial: 'books/favorite', locals: { book: @book} %>
-        </div>
+          <div id="favorites_buttons_<%= @book.id %>">
+            <%= render partial: 'books/favorite', locals: { book: @book} %>
+          </div>
+        </td>
+        <td>
+          <div id="comments_area">
+            <%= render partial: 'comments/commentindex', locals: {comments: @comments} %>
+          </div>
         </td>
         <% if @book.user == current_user%>
           <td><%= link_to "Edit", edit_book_path, class: "btn btn-success" %></td>
